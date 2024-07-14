@@ -1,0 +1,122 @@
+
+
+  <section class="m-5">
+
+    <div>
+        <h1 class="text-center">Customers Transactions Data</h1>
+        <div class="w-100 m-3 d-flex justify-content-center" >
+            <mat-form-field  appearance="outline">
+              <button class="bg-transparent border-0" matPrefix mat-icon-button 
+              (click)="searchCustomers()">
+              <mat-icon>search</mat-icon>
+             </button>
+              <mat-label class="lable">Search</mat-label>
+             
+              <input type="text" class=" text-dark inp-radius" placeholder="Search by customer name"
+                [(ngModel)]="searchInput"  (keyup.enter)="searchCustomers()"(keyup.escape)="searchCustomers()" matInput>
+              <button *ngIf="searchInput" class="bg-transparent border-0" matSuffix mat-icon-button aria-label="Clear"
+                (click)="searchInput='';searchCustomers()">
+                <mat-icon>close</mat-icon>
+              </button>
+            </mat-form-field>
+          
+          </div>
+      <table class="table table-hover  table-bordered text-center border border-1  shadow" >
+        <thead>
+          <tr class="text-center position-center">
+            <th>CX ID</th>
+            <th>Name</th>
+            <th>Total Transaction Amount</th>
+            <th>Transactions per day</th>
+            <th>Transactions Data</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let customer of customers">
+            <td>{{ customer.id }}</td>
+            <td>{{ customer.name }}</td>
+            <td>{{ customerTransactionTotal[customer.id] || 0 }} </td>
+            <td><mat-slide-toggle (click) = "toggleDisplay()" >View Transaction Details?</mat-slide-toggle> </td>
+            <td><button class="btn btn-secondary" (click)="graphDisplay()">View</button></td>
+          </tr>
+        </tbody>
+      </table>
+    <!--  -->
+     <div class="container py-5 m-5">
+        <div class="row">
+            <div class="col-md-6">
+                <h3 class=""> Detailed Customers Transactions Data</h3>
+                <table *ngIf = 'isShow' class="table table-hover table-bordered text-center border border-1  shadow w-50" >
+                    <thead>
+                      <tr>
+                        <th>Transaction ID </th>
+                        <th>Cx ID</th>
+                        <th>Cx Name</th>
+                        <th>Date</th>
+                        <th>Transactions Amount</th>
+                        <!-- <th>Transactions Date</th> -->
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let t of transactions">
+                        <!-- <td *ngIf="t.id=='1'">{{ t.id }}</td> -->
+                        <td>{{ t.id }}</td>
+                        <td>{{ t.customer_id }}</td>
+            
+                        <ng-container *ngIf="t.customer_id ==1;else second">
+                            <td>Ahmed Ali</td>
+                        </ng-container>
+            
+                        <ng-template #second>
+                            <ng-container *ngIf="t.customer_id ==2;else third">
+                                <td>Aya Elsayed</td>
+                            </ng-container>
+                        </ng-template>
+            
+                        <ng-template #third>
+                            <ng-container *ngIf="t.customer_id ==3;else fourth">
+                                <td>Mina Adel</td>
+                            </ng-container>
+                        </ng-template>
+            
+                        <ng-template #fourth>
+                            <ng-container *ngIf="t.customer_id ==4;else fifth">
+                                <td>Sarah Reda</td>
+                            </ng-container>
+                        </ng-template>
+            
+                        <ng-template #fifth>
+                            <ng-container *ngIf="t.customer_id ==5;">
+                                <td>Mohamed Sayed</td>
+                            </ng-container>
+                        </ng-template>
+            
+                        <td>{{ t.date }}</td>
+                        <td>{{ t.amount }}</td>
+                       
+                      </tr>
+                    </tbody>
+                  </table>
+      
+             
+            </div>
+            <div class="col-md-6">
+                <h3 class="text-center">Customers Transactions Graph</h3>
+
+                <div *ngIf = 'isGraph' class="text-center shadow w-100" >
+                    <app-chart></app-chart>
+                </div>
+             </div>
+        
+        </div>
+    
+     </div>
+
+    
+    </div>
+
+    
+    
+    </section>
+    

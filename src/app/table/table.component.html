@@ -1,0 +1,103 @@
+<!-- <table>
+<thead><tr><th>hi</th> <th>hi</th> <th>hi</th></tr></thead>
+<tbody>
+<tr><td>hi</td><td>hi</td><td>hi</td></tr>
+<tr><td>hi</td><td>hi</td><td>hi</td></tr>
+<tr><td>hi</td><td>hi</td><td>hi</td></tr>
+
+</tbody>
+
+
+
+</table>
+
+
+<div>
+    <mat-toolbar color="primary">
+      <span><mat-icon>mood</mat-icon></span>
+  
+      <span>Yay, Material in Angular 2!</span>
+  
+      <button mat-icon-button [mat-menu-trigger-for]="menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+    </mat-toolbar>
+    <mat-menu x-position="before" #menu="matMenu">
+      <button mat-menu-item>Option 1</button>
+      <button mat-menu-item>Option 2</button>
+    </mat-menu>
+  
+    <mat-card>
+      <button mat-button>All</button>
+      <button mat-raised-button>Of</button>
+      <button mat-raised-button color="primary">The</button>
+      <button mat-raised-button color="accent">Buttons</button>
+    </mat-card>
+  
+    <span class="done">
+      <button mat-fab>
+        <mat-icon>check circle</mat-icon>
+      </button>
+    </span>
+  </div> -->
+
+
+<!-- 
+  <hr/>
+  <hr/>
+  <hr/> -->
+
+  <mat-card>
+      <mat-card-header>
+          <mat-card-title>Name</mat-card-title>
+          <mat-card-subtitle>Fname Lname</mat-card-subtitle>
+
+          <!-- <mat-card-title>ID</mat-card-title>
+          <mat-card-subtitle>Customer ID</mat-card-subtitle> -->
+      </mat-card-header>
+      <!-- <img matCardImage src="Card wide image source"> -->
+      <mat-card-content>
+        
+   
+  <table class="mat-elevation-z8">
+    <div>
+        <!-- <th mat-header-cell *matHeaderCellDef="">ID</th>
+        <td mat-cell *matCellDef="let element">{{item.id}}</td> -->
+        
+        <tr class="container" *ngFor="let item of customerList">
+            <td>{{ item.name }}</td>
+            <td>{{item.id}}</td>
+        </tr>
+                
+            <!-- <td>{{ customerTransactionAmounts[customer.id] || 0 }}</td> -->
+            <!-- <td><button class="primary" (click)="selectCustomer(customer.id)">View</button></td> -->
+    </div>
+
+    <div>
+        <!-- <th mat-header-cell *matHeaderCellDef="">ID</th>
+        <td mat-cell *matCellDef="let element">{{item.id}}</td> -->
+        
+        <tr class="container" *ngFor="let item of customerList">
+            <td>{{ item.name }}</td>
+            <td>{{item.id}}</td>
+        </tr>
+                
+            <!-- <td>{{ customerTransactionAmounts[customer.id] || 0 }}</td> -->
+            <!-- <td><button class="primary" (click)="selectCustomer(customer.id)">View</button></td> -->
+    </div>
+
+    <!-- <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef="">Name</th>
+        <td mat-cell *matCellDef="let element">{{element.name}}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row;colums:displayedColumns"></tr> -->
+  </table>
+
+</mat-card-content>
+
+<mat-card-footer>
+    Footer
+</mat-card-footer>
+</mat-card>
